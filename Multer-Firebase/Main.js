@@ -10,6 +10,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+require('./Routes/Hero.routes')(app);
+
 //Listen
 app.listen(app.get('port'), () => {
     console.log('Iniciado ' + app.get('port'));
