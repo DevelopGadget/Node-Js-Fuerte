@@ -17,5 +17,5 @@ exports.Put = async (req, res) => {
 }
 
 exports.Delete = async (req, res) => {
-
+    return res.status(200).send(await Firebase.Delete(req.params.Id));
 }

@@ -27,5 +27,5 @@ exports.Put = async (Hero, Id) => {
 }
 
 exports.Delete = async Id => {
-
+    return await Database.collection('Heroes').doc(Id).delete();
 }
