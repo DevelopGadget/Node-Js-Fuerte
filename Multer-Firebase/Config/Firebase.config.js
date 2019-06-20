@@ -9,3 +9,12 @@ exports.App = admin.initializeApp({
 
 exports.Database = admin.firestore();
 exports.Storage = admin.storage();
+exports.FieldPath = admin.firestore.FieldPath.documentId();
+
+exports.Data = Snaps => {
+    var final = [];
+    Snaps.forEach(e => {
+        final.push(Object.assign({ 'id': e.id }, e.data()));
+    });
+    return final;
+}
