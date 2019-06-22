@@ -19,16 +19,11 @@ exports.GetById = async Id => {
 }
 
 exports.Post = async Hero => {
-    var photo = false;
     Storage(Hero, {}, (err) => {
-        photo = err ? false : true;
+        if (!err) {
+            await Database.collection('Heroes').add(Object.assign({ 'Photo': Hero.file.originalname }, Hero.body));
+        }
     });
-    if (photo) {
-        return await Database.collection('Heroes').add(Object.assign({ 'Photo': Hero.file.originalname }, Hero.body));
-    } else {
-        console.log('Hola')
-        return new Error('Error');
-    }
 }
 
 exports.Put = async (Hero, Id) => {
