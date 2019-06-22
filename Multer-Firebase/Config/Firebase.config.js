@@ -1,4 +1,6 @@
 const admin = require('firebase-admin');
+const Multer = require('multer');
+const path = require('path');
 
 const serviceAccount = require('../firebase.json');
 
@@ -8,9 +10,7 @@ exports.App = admin.initializeApp({
 });
 
 exports.Database = admin.firestore();
-exports.Storage = admin.storage();
 exports.FieldPath = admin.firestore.FieldPath.documentId();
-
 exports.Data = Snaps => {
     var final = [];
     Snaps.forEach(e => {
@@ -18,3 +18,14 @@ exports.Data = Snaps => {
     });
     return final;
 }
+
+const storage = Multer.diskStorage({
+    destination: path.join(__dirname, '../uploads'),
+    filename:  (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+})
+exports.Image = uploadImage = Multer({
+    storage,
+    limits: {fileSize: 5000000}
+}).single('image');

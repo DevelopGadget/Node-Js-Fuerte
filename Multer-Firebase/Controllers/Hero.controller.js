@@ -9,7 +9,7 @@ exports.GetById = async (req, res) => {
 }
 
 exports.Post = async (req, res) => {
-
+    return res.status(200).send(await Firebase.Post(req));
 }
 
 exports.Put = async (req, res) => {

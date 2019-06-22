@@ -1,8 +1,8 @@
 const App = require('../Config/Firebase.config');
 const Database = App.Database;
-const Storage = App.Storage;
 const DataFormat = App.Data;
 const FieldPath = App.FieldPath;
+const Storage = App.Image;
 
 exports.Get = async ({ Skip = 0, Limit = 50 }) => {
     const snaps = await Database.collection('Heroes')
@@ -19,7 +19,14 @@ exports.GetById = async Id => {
 }
 
 exports.Post = async Hero => {
-
+    Storage(Hero, {}, (err) => {
+        if (err) {
+            err.message = 'Archivo no subido';
+            return err;
+        }
+        console.log(Hero.file);
+        return { 'Ok': true };
+    });
 }
 
 exports.Put = async (Hero, Id) => {
