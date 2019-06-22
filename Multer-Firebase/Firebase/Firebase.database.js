@@ -19,14 +19,16 @@ exports.GetById = async Id => {
 }
 
 exports.Post = async Hero => {
-    Storage(Hero, {}, (err) => {
+    var montar = {};
+    await Storage(Hero, {}, async (err) => {
         if (err) {
-            err.message = 'Archivo no subido';
+            montar = { 'err': 'Archivo no soportado' }
             return err;
         }
-        console.log(Hero.file);
-        return { 'Ok': true };
+        montar = await Database.collection('Heroes').add(Object.assign({ 'Photo': Hero.file.originalname }, Hero.body));
+        console.log(montar);
     });
+    return montar;
 }
 
 exports.Put = async (Hero, Id) => {
