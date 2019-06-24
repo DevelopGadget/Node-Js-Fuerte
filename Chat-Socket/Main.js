@@ -8,10 +8,10 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-require('./Routes/Hero.routes').HeroRoutes(app);
+require('./Routes/User.routes').User(app);
 
 //Listen
 app.listen(app.get('port'), () => {
-    console.log('Init')
+    console.log('Init');
 
 });
