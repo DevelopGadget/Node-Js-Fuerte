@@ -6,12 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/Chat.js"></script>
 </head>
 
-<body>
-
+<body style="height: 100vh">
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="card" style="width: 100%">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Chat entre Usuarios
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                    </div>
+                </div>
+                <footer class="card-footer is-4">
+                    <form action="javascript:;" method="post" style="width: 100%; padding: 15px">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="text" placeholder="User" required id="user" />
+                            </p>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <textarea class="textarea" placeholder="Mensaje" required id="msg"></textarea>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <p class="control">
+                                <button class="button is-info is-fullwidth" type="submit">Enviar</button>
+                            </p>
+                        </div>
+                    </form>
+                </footer>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
