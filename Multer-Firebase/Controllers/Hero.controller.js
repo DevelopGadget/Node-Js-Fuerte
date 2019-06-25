@@ -13,7 +13,7 @@ exports.Post = async (req, res) => {
 }
 
 exports.Put = async (req, res) => {
-
+    return res.status(200).send(await Firebase.Put(req.body, req.params.Id));
 }
 
 exports.Delete = async (req, res) => {
